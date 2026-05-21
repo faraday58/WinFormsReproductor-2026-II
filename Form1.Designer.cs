@@ -40,6 +40,8 @@
             ptbPortada = new PictureBox();
             menuStrip1 = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
+            abrirToolStripMenuItem = new ToolStripMenuItem();
+            guardarToolStripMenuItem = new ToolStripMenuItem();
             reproducciónToolStripMenuItem = new ToolStripMenuItem();
             reproducirToolStripMenuItem = new ToolStripMenuItem();
             siguienteToolStripMenuItem = new ToolStripMenuItem();
@@ -50,8 +52,6 @@
             lbTiempoTrans = new Label();
             label4 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
-            abrirToolStripMenuItem = new ToolStripMenuItem();
-            guardarToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)ptbPortada).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -146,6 +146,20 @@
             archivoToolStripMenuItem.Size = new Size(88, 29);
             archivoToolStripMenuItem.Text = "Archivo";
             // 
+            // abrirToolStripMenuItem
+            // 
+            abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
+            abrirToolStripMenuItem.Size = new Size(270, 34);
+            abrirToolStripMenuItem.Text = "Abrir";
+            abrirToolStripMenuItem.Click += abrirToolStripMenuItem_Click;
+            // 
+            // guardarToolStripMenuItem
+            // 
+            guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            guardarToolStripMenuItem.Size = new Size(270, 34);
+            guardarToolStripMenuItem.Text = "Guardar";
+            guardarToolStripMenuItem.Click += guardarToolStripMenuItem_Click;
+            // 
             // reproducciónToolStripMenuItem
             // 
             reproducciónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reproducirToolStripMenuItem, siguienteToolStripMenuItem, anteriorToolStripMenuItem, stopToolStripMenuItem, pausaToolStripMenuItem });
@@ -219,19 +233,6 @@
             // 
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
-            // 
-            // abrirToolStripMenuItem
-            // 
-            abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            abrirToolStripMenuItem.Size = new Size(270, 34);
-            abrirToolStripMenuItem.Text = "Abrir";
-            // 
-            // guardarToolStripMenuItem
-            // 
-            guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            guardarToolStripMenuItem.Size = new Size(270, 34);
-            guardarToolStripMenuItem.Text = "Guardar";
-            guardarToolStripMenuItem.Click += guardarToolStripMenuItem_Click;
             // 
             // Form1
             // 

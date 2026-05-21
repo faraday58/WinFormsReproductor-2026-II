@@ -65,27 +65,73 @@ namespace WinFormsReproductor_2026_II
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Archivos de Texto (*.txt)|*.txt | Todos los archivos (*.*)|*.*";
 
-            if ( sfd.ShowDialog() == DialogResult.OK   )  
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
                 StreamWriter sw = new StreamWriter(sfd.FileName);
                 try
                 {
                     sw.WriteLine("Artista,Nombre,Album,RutaImagen");
 
-                    foreach ( Cancion cancion in canciones  )
+                    foreach (Cancion cancion in canciones)
                     {
                         sw.WriteLine($"{cancion.Artista},{cancion.Nombre},{cancion.Album},{cancion.ImgDir}");
                     }
 
                 }
-                catch(Exception error)
+                catch (Exception error)
                 {
-                    MessageBox.Show("Error: " + error );
+                    MessageBox.Show("Error: " + error);
                 }
                 finally
                 {
                     sw.Close();
-                }                       
+                }
+
+
+
+            }
+
+        }
+
+        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Archivos de Texto (*.txt)|*.txt | Todos los archivos (*.*)|*.*";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader sr = new StreamReader(ofd.FileName);
+
+                try
+                {
+                    sr.ReadLine(); // Leer la primera línea (encabezados) y descartarla
+
+                    while (!sr.EndOfStream)
+                    {
+                        string[] datos = sr.ReadLine().Split(',');
+                        if(datos.Length == 4)
+                        {
+                            Cancion cancion = new Cancion(
+                                datos[0], // Artista
+                                datos[1], // Nombre
+                                datos[2], // Album
+                                datos[3]  // RutaImagen
+                                );
+                            canciones.Add(cancion);
+                            listbCanciones.Items.Add(cancion.Nombre);
+                        }
+
+                    }
+
+                }
+                catch(Exception error) { 
+                    MessageBox.Show("Error: " + error);
+                }
+                finally
+                {
+                    sr.Close();
+                }
 
 
 
