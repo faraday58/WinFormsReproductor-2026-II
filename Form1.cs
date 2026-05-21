@@ -1,4 +1,6 @@
 using System.Drawing.Design;
+using System.IO;
+
 
 namespace WinFormsReproductor_2026_II
 {
@@ -56,6 +58,39 @@ namespace WinFormsReproductor_2026_II
         private void pausaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             timer1.Stop();
+        }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Archivos de Texto (*.txt)|*.txt | Todos los archivos (*.*)|*.*";
+
+            if ( sfd.ShowDialog() == DialogResult.OK   )  
+            {
+                StreamWriter sw = new StreamWriter(sfd.FileName);
+                try
+                {
+                    sw.WriteLine("Artista,Nombre,Album,RutaImagen");
+
+                    foreach ( Cancion cancion in canciones  )
+                    {
+                        sw.WriteLine($"{cancion.Artista},{cancion.Nombre},{cancion.Album},{cancion.ImgDir}");
+                    }
+
+                }
+                catch(Exception error)
+                {
+                    MessageBox.Show("Error: " + error );
+                }
+                finally
+                {
+                    sw.Close();
+                }                       
+
+
+
+            }
+
         }
     }
 }

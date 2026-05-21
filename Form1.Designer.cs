@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             listbCanciones = new ListBox();
             label1 = new Label();
             lbArtista = new Label();
@@ -44,11 +45,13 @@
             siguienteToolStripMenuItem = new ToolStripMenuItem();
             anteriorToolStripMenuItem = new ToolStripMenuItem();
             stopToolStripMenuItem = new ToolStripMenuItem();
+            pausaToolStripMenuItem = new ToolStripMenuItem();
             progressBar1 = new ProgressBar();
             lbTiempoTrans = new Label();
             label4 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
-            pausaToolStripMenuItem = new ToolStripMenuItem();
+            abrirToolStripMenuItem = new ToolStripMenuItem();
+            guardarToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)ptbPortada).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -138,6 +141,7 @@
             // 
             // archivoToolStripMenuItem
             // 
+            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { abrirToolStripMenuItem, guardarToolStripMenuItem });
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             archivoToolStripMenuItem.Size = new Size(88, 29);
             archivoToolStripMenuItem.Text = "Archivo";
@@ -151,28 +155,40 @@
             // 
             // reproducirToolStripMenuItem
             // 
+            reproducirToolStripMenuItem.Image = Properties.Resources.play_button;
             reproducirToolStripMenuItem.Name = "reproducirToolStripMenuItem";
-            reproducirToolStripMenuItem.Size = new Size(270, 34);
+            reproducirToolStripMenuItem.Size = new Size(200, 34);
             reproducirToolStripMenuItem.Text = "Reproducir";
             reproducirToolStripMenuItem.Click += reproducirToolStripMenuItem_Click;
             // 
             // siguienteToolStripMenuItem
             // 
+            siguienteToolStripMenuItem.Image = Properties.Resources.right_arrow;
             siguienteToolStripMenuItem.Name = "siguienteToolStripMenuItem";
-            siguienteToolStripMenuItem.Size = new Size(270, 34);
+            siguienteToolStripMenuItem.Size = new Size(200, 34);
             siguienteToolStripMenuItem.Text = "Siguiente";
             // 
             // anteriorToolStripMenuItem
             // 
+            anteriorToolStripMenuItem.Image = Properties.Resources.left_arrow;
             anteriorToolStripMenuItem.Name = "anteriorToolStripMenuItem";
-            anteriorToolStripMenuItem.Size = new Size(270, 34);
+            anteriorToolStripMenuItem.Size = new Size(200, 34);
             anteriorToolStripMenuItem.Text = "Anterior";
             // 
             // stopToolStripMenuItem
             // 
+            stopToolStripMenuItem.Image = Properties.Resources.stop_button;
             stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            stopToolStripMenuItem.Size = new Size(270, 34);
+            stopToolStripMenuItem.Size = new Size(200, 34);
             stopToolStripMenuItem.Text = "Stop";
+            // 
+            // pausaToolStripMenuItem
+            // 
+            pausaToolStripMenuItem.Image = Properties.Resources.pause;
+            pausaToolStripMenuItem.Name = "pausaToolStripMenuItem";
+            pausaToolStripMenuItem.Size = new Size(200, 34);
+            pausaToolStripMenuItem.Text = "Pausa";
+            pausaToolStripMenuItem.Click += pausaToolStripMenuItem_Click;
             // 
             // progressBar1
             // 
@@ -204,17 +220,24 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
-            // pausaToolStripMenuItem
+            // abrirToolStripMenuItem
             // 
-            pausaToolStripMenuItem.Name = "pausaToolStripMenuItem";
-            pausaToolStripMenuItem.Size = new Size(270, 34);
-            pausaToolStripMenuItem.Text = "Pausa";
-            pausaToolStripMenuItem.Click += pausaToolStripMenuItem_Click;
+            abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
+            abrirToolStripMenuItem.Size = new Size(270, 34);
+            abrirToolStripMenuItem.Text = "Abrir";
+            // 
+            // guardarToolStripMenuItem
+            // 
+            guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            guardarToolStripMenuItem.Size = new Size(270, 34);
+            guardarToolStripMenuItem.Text = "Guardar";
+            guardarToolStripMenuItem.Click += guardarToolStripMenuItem_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(30, 215, 96);
             ClientSize = new Size(1789, 760);
             Controls.Add(label4);
             Controls.Add(lbTiempoTrans);
@@ -228,6 +251,7 @@
             Controls.Add(label1);
             Controls.Add(listbCanciones);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Form1";
@@ -260,5 +284,7 @@
         private Label label4;
         private System.Windows.Forms.Timer timer1;
         private ToolStripMenuItem pausaToolStripMenuItem;
+        private ToolStripMenuItem abrirToolStripMenuItem;
+        private ToolStripMenuItem guardarToolStripMenuItem;
     }
 }
